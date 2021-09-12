@@ -1,7 +1,7 @@
 ---
 title: posting test2
 author: sunghoon
-date: 2021-09-12 18:18:00 -0500
+date: 2021-09-12 18:18:00 +0900
 categories: [Blogging, Tutorial]
 tags: [google analytics, pageviews]
 pin: true
