@@ -23,11 +23,10 @@ str.chars()
     .forEach(System.out::println);
 ```
 
-> 119
-48
-48
-116
-> 
+> 119  
+> 48  
+> 48  
+> 116  
 
 → 문자가 출력되는 대신 숫자가 출력됐다. 그 이유는 chars() 메서드가 Characters의 스트림 대신 문자를 표현하는 intStream을 리턴했기 때문
 
@@ -57,10 +56,10 @@ private static void printChar(int aChar) {
 }
 ```
 
-> w
-0
-0
-t
+> w  
+0  
+0  
+t  
 > 
 
 - 처음부터 int가 아닌 문자로 처리하고 싶다면 chars()를 호출하고 나서 바로 문자로 변환하면 된다.
@@ -80,8 +79,8 @@ str.chars()
   .forEach(ch -> printChar(ch));
 ```
 
-> 0
-0
+> 0  
+0  
 > 
 
 ```java
@@ -148,11 +147,11 @@ List<Person> ascendingAge =
 printPeople("Sorted in ascending order by age : ", ascendingAge);
 ```
 
-> Sorted in ascending order by age : 
-John - 20
-Sara - 21
-Jane - 21
-Greg - 35
+> Sorted in ascending order by age :   
+John - 20  
+Sara - 21  
+Jane - 21  
+Greg - 35  
 > 
 
 → 리스트에 대한 sort()메서드는 void메서드이기 때문에 리스트 자체가 변경될수 있음.
@@ -205,16 +204,16 @@ printPeople("Sorted in descending order by age : " ,
 
 → 위 소스는 람다 표현식이 아닌 메서드 레퍼런스로는 쉽게 변경할 수 없다. 왜냐하면 파라미터 순서가 메서드 레퍼런스를 사용하기 위한 파라미터 라우팅 규칙을 따르지 않기 때문!
 
-> Sorted in descending order by age :
-Greg - 35
-Sara - 21
-Jane - 21
-John - 20
-Sorted in ascending order by age :
-John - 20
-Sara - 21
-Jane - 21
-Greg - 35
+> Sorted in descending order by age :  
+Greg - 35  
+Sara - 21  
+Jane - 21  
+John - 20  
+Sorted in ascending order by age :  
+John - 20  
+Sara - 21  
+Jane - 21  
+Greg - 35  
 > 
 
 - name 알파벳의 오름차순 정렬
@@ -226,11 +225,11 @@ printPeople("Sorted in ascending order by name : " ,
             .collect(Collectors.toList()));
 ```
 
-> Sorted in ascending order by name :
-Greg - 35
-Jane - 21
-John - 20
-Sara - 21
+> Sorted in ascending order by name :  
+Greg - 35  
+Jane - 21  
+John - 20  
+Sara - 21  
 > 
 
 - 가장 젊은 사람, 가장 늙은 사람 출력
@@ -262,11 +261,11 @@ people.stream()
         .collect(Collectors.toList()));
 ```
 
-> 이름순 정렬하기 : 
-Greg - 35
-Jane - 21
-John - 20
-Sara - 21
+> 이름순 정렬하기 :   
+Greg - 35  
+Jane - 21  
+John - 20  
+Sara - 21  
 > 
 
 - 복합정렬
@@ -281,11 +280,11 @@ printPeople("복합 정렬하기 : ",
                 .collect(Collectors.toList()));
 ```
 
-> 복합 정렬하기 :
-John - 20
-Jane - 21
-Sara - 21
-Greg - 35
+> 복합 정렬하기 :  
+John - 20  
+Jane - 21  
+Sara - 21  
+Greg - 35  
 > 
 
 ## ▶︎ collect 메서드와 Collectors 클래스 사용하기
@@ -356,8 +355,8 @@ Map<Integer, List<String>> nameOfPeopleByAge =
 System.out.println("People grouped by age : " + nameOfPeopleByAge);
 ```
 
-> People grouped by age : {35=[Greg], 20=[John], 21=[Sara, Jane]}
-> 
+> People grouped by age : {35=[Greg], 20=[John], 21=[Sara, Jane]}  
+>   
 
 ```java
 // groupingBy 메서드 내부
@@ -381,8 +380,8 @@ System.out.println("Oldest person of each letter : ");
 System.out.println(oldestPersonOfEachLetter);
 ```
 
-> Oldest person of each letter :
-{S=Optional[Sara - 21], G=Optional[Greg - 35], J=Optional[Jane - 21]}
+> Oldest person of each letter :  
+{S=Optional[Sara - 21], G=Optional[Greg - 35], J=Optional[Jane - 21]}  
 >
 
   
