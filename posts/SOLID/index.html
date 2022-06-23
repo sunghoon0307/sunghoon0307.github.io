@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="en" mode="dark" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="day-prompt" content="days ago"><meta name="hour-prompt" content="hours ago"><meta name="minute-prompt" content="minutes ago"><meta name="justnow-prompt" content="just now"><meta name="generator" content="Jekyll v4.2.2" /><meta property="og:title" content="객체지향의 5대원칙 - SOLID (SRP, OCP, LSP, ISP, DIP)" /><meta name="author" content="sunghoon" /><meta property="og:locale" content="en" /><meta name="description" content="객체지향의 5대원칙 : SOLID (SRP, OCP, LSP, ISP, DIP) SOLID란 Robert C. Martin이 2000년대 초반에 명명한 객체 지향 프로그래밍 및 설계의 다섯가지 기본 원칙을 마이클 페더스가 두문자 기억술로 소개한 것이다. 프로그래머가 시간이 지나도 유지보수와 확장이 쉬운 시스템을 만들고자 할 때 이 원칙들을 함께 적용할 수 있다. SOLID 원칙들은 가독성이 좋고, 확장하기 쉽게 될 때까지, 리팩토링하기를 권장. → 냄새나는 코드의 제거가 목표. 변화의 수용에 최적화!" /><meta property="og:description" content="객체지향의 5대원칙 : SOLID (SRP, OCP, LSP, ISP, DIP) SOLID란 Robert C. Martin이 2000년대 초반에 명명한 객체 지향 프로그래밍 및 설계의 다섯가지 기본 원칙을 마이클 페더스가 두문자 기억술로 소개한 것이다. 프로그래머가 시간이 지나도 유지보수와 확장이 쉬운 시스템을 만들고자 할 때 이 원칙들을 함께 적용할 수 있다. SOLID 원칙들은 가독성이 좋고, 확장하기 쉽게 될 때까지, 리팩토링하기를 권장. → 냄새나는 코드의 제거가 목표. 변화의 수용에 최적화!" /><link rel="canonical" href="https://sunghoon0307.github.io/posts/SOLID/" /><meta property="og:url" content="https://sunghoon0307.github.io/posts/SOLID/" /><meta property="og:site_name" content="Hoon’s Devlog" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-11-15T13:58:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="객체지향의 5대원칙 - SOLID (SRP, OCP, LSP, ISP, DIP)" /><meta name="twitter:site" content="@twitter_username" /><meta name="twitter:creator" content="@sunghoon" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sunghoon"},"dateModified":"2021-11-26T16:08:12+09:00","datePublished":"2021-11-15T13:58:00+09:00","description":"객체지향의 5대원칙 : SOLID (SRP, OCP, LSP, ISP, DIP) SOLID란 Robert C. Martin이 2000년대 초반에 명명한 객체 지향 프로그래밍 및 설계의 다섯가지 기본 원칙을 마이클 페더스가 두문자 기억술로 소개한 것이다. 프로그래머가 시간이 지나도 유지보수와 확장이 쉬운 시스템을 만들고자 할 때 이 원칙들을 함께 적용할 수 있다. SOLID 원칙들은 가독성이 좋고, 확장하기 쉽게 될 때까지, 리팩토링하기를 권장. → 냄새나는 코드의 제거가 목표. 변화의 수용에 최적화!","headline":"객체지향의 5대원칙 - SOLID (SRP, OCP, LSP, ISP, DIP)","mainEntityOfPage":{"@type":"WebPage","@id":"https://sunghoon0307.github.io/posts/SOLID/"},"url":"https://sunghoon0307.github.io/posts/SOLID/"}</script><title>객체지향의 5대원칙 - SOLID (SRP, OCP, LSP, ISP, DIP) | Hoon's Devlog</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Hoon's Devlog"><meta name="application-name" content="Hoon's Devlog"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end" lang="en"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/avatar.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Hoon's Devlog</a></div><div class="site-subtitle font-italic">매일매일 성장하는 개발자</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/sunghoon0307" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/twitter_username" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['linux','kakao.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>객체지향의 5대원칙 - SOLID (SRP, OCP, LSP, ISP, DIP)</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>객체지향의 5대원칙 - SOLID (SRP, OCP, LSP, ISP, DIP)</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> sunghoon </span> on <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Mon, Nov 15, 2021, 1:58 PM +0900" >Nov 15, 2021<i class="unloaded">2021-11-15T13:58:00+09:00</i> </span></div><div> <span> Updated <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Fri, Nov 26, 2021, 4:08 PM +0900" >Nov 26, 2021<i class="unloaded">2021-11-26T16:08:12+09:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="2856 words">15 min read</span></div></div><div class="post-content"><h1 id="객체지향의-5대원칙--solid-srp-ocp-lsp-isp-dip">객체지향의 5대원칙 : SOLID (SRP, OCP, LSP, ISP, DIP)</h1><hr /><p>SOLID란 Robert C. Martin이 2000년대 초반에 명명한 객체 지향 프로그래밍 및 설계의 다섯가지 기본 원칙을 마이클 페더스가 두문자 기억술로 소개한 것이다.<br /> 프로그래머가 시간이 지나도 유지보수와 확장이 쉬운 시스템을 만들고자 할 때 이 원칙들을 함께 적용할 수 있다.</p><p>SOLID 원칙들은 <b>가독성</b>이 좋고, <b>확장</b>하기 쉽게 될 때까지, 리팩토링하기를 권장.<br /> → <b>냄새나는 코드의 제거</b>가 목표. 변화의 수용에 최적화!</p><h2 id="srp---단일-책임-원칙-single-responsibility-principle">SRP - 단일 책임 원칙 (Single responsibility principle)</h2><p>단일 책임 원칙(single responsibility principle)이란 <b>모든 클래스는 하나의 책임만 가지며, 클래스는 그 책임을 완전히 캡슐화해야 함</b>을 일컫는다. 클래스가 제공하는 모든 기능은 이 책임과 주의 깊게 부합해야 한다. (함수나 모듈도 단일 책임을 위임해야함)</p><p>여기서 책임이란, <b>‘기능’</b> 정도의 의미로 해석하면 된다.</p><p>한 모듈에 책임이 많아진다면, 그 책임만큼 변화를 감당해야 할 수 있음.<br /> 책임이 많아지면 클래스 내부의 함수끼리 강한 결합을 발생할 가능성이 높아진다. 이는 유지보수에 비용이 증가하게 되므로 따라서 책임을 분리시킬 필요가 있다.</p><h2 id="ocp---개방-폐쇄-원칙-openclosed-principle">OCP - 개방-폐쇄 원칙 (Open/closed principle)</h2><p>개방-폐쇄 원칙(OCP, Open-Closed Principle)은 <strong>‘소프트웨어 개체(클래스, 모듈, 함수 등등)는 확장에 대해 열려 있어야 하고, 수정에 대해서는 닫혀 있어야 한다’</strong>는 원칙</p><p>즉, 기존의 코드를 변경하지 않고(Closed) 기능을 수정하거나 추가할 수 있도록(Open) 설계해야 한다.</p><p>OCP에 만족하는 설계를 할 때 변경되는 것이 무엇인지에 초점을 맞춘다. 자주 변경되는 내용은 수정하기 쉽게 설계 하고, 변경되지 않아야 하는 것은 수정되는 내용에 영향을 받지 않게 하는 것이 포인트</p><div class="language-java highlighter-rouge"><div class="code-header" data-lang="java"><button><i class="fa-fw far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">Player</span> <span class="o">{</span>  
+	<span class="kt">void</span> <span class="nf">play</span><span class="o">(){</span>  
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"play youtube"</span><span class="o">);</span> <span class="c1">// 유튜브 재생  </span>
+	<span class="o">}</span>  
+<span class="o">}</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>  
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>  
+		<span class="nc">Player</span> <span class="n">player</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Player</span><span class="o">();</span>  
+		<span class="n">player</span><span class="o">.</span><span class="na">play</span><span class="o">();</span>	  
+	<span class="o">}</span>  
+<span class="o">}</span>    
+</pre></table></code></div></div><p>Player 클래스는 영상을 재생해주는 클래스이다. 이 클래스는 기본적으로 youtube를 재생 할 수 있다. 그러나 player가 다른 서비스의 영상, 예를들어 Netflix의 영상을 재생하도록 요구사항이 변경 되었다고 하자. 요구사항 만족을 위해서는 Player의 play() 메소드 자체를 수정하여야 한다. 이러한 소스의 변경은 OCP 원칙에 위배된다.</p><p>그렇다면 어떻게 해야 OCP 원칙을 만족시킬 수 있을까? 다양한 방법이 있지만 여기선 인터페이스를 이용하여 OCP를 만족시켜 보자. 먼저 변해야 하는것은 무엇인지 정의한다. 위 클래스에서는 play() 메소드가 변해야 하는 것이다. 따라서 play() 메소드를 인터페이스로 분리한다.</p><div class="language-java highlighter-rouge"><div class="code-header" data-lang="java"><button><i class="fa-fw far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre><td class="rouge-code"><pre><span class="kd">interface</span> <span class="nc">PlayerType</span><span class="o">{</span>  
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">play</span><span class="o">();</span>  
+<span class="o">}</span>  
+  
+<span class="kd">class</span> <span class="nc">Youtube</span> <span class="kd">implements</span> <span class="nc">PlayerType</span><span class="o">{</span>  
+	<span class="nd">@Override</span>  
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">play</span><span class="o">(){</span>
+		  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"play youtube"</span><span class="o">);</span> <span class="c1">// 유튜브 재생   </span>
+	<span class="o">}</span>  
+<span class="o">}</span>  
+
+<span class="kd">class</span> <span class="nc">Netflix</span> <span class="kd">implements</span> <span class="nc">PlayerType</span><span class="o">{</span>  
+	<span class="nd">@Override</span>  
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">play</span><span class="o">(){</span>
+		  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"play Netflix"</span><span class="o">);</span> <span class="c1">// 넷플릭스 재생   </span>
+	<span class="o">}</span>  
+<span class="o">}</span>  
+
+  
+
+</pre></table></code></div></div><div class="language-java highlighter-rouge"><div class="code-header" data-lang="java"><button><i class="fa-fw far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre><td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">Player</span><span class="o">{</span>
+	<span class="kd">private</span> <span class="nc">PlayerType</span> <span class="n">playerType</span><span class="o">;</span>  
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPlayerType</span><span class="o">(</span><span class="nc">PlayerType</span> <span class="n">playerType</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">playerType</span> <span class="o">=</span> <span class="n">playerType</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">play</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">playerType</span><span class="o">.</span><span class="na">play</span><span class="o">()</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>  
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>  
+		<span class="n">player</span> <span class="n">player</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Player</span><span class="o">();</span>  
+		<span class="n">player</span><span class="o">.</span><span class="na">setPlayerType</span><span class="o">(</span><span class="k">new</span> <span class="nc">Youtube</span><span class="o">());</span>  <span class="c1">//원하는 플랫폼 선택  </span>
+		<span class="n">player</span><span class="o">.</span><span class="na">setPlayerType</span><span class="o">(</span><span class="k">new</span> <span class="nc">Netflix</span><span class="o">());</span>          
+		<span class="n">player</span><span class="o">.</span><span class="na">play</span><span class="o">();</span>	  
+	<span class="o">}</span>  
+<span class="o">}</span>  
+</pre></table></code></div></div><p>Player 클래스에서는 playerLogic 인터페이스를 멤버 변수로 만든다. 그 후 Player play() 함수는 인터페이스를 상속받아 구현된 클래스의 play()함수를 실행시키게 한다. 마지막으로 메인함수에서 setter를 이용하여 우리가 플레이하고자 하는 파일의 객체를 지정해주면 된다.</p><p>결과적으로 player 클래스는 변경 없이 재생 플랫폼을 바꿀 수 있으므로 OCP를 만족한다. 하지만 클라이언트 코드는 변경이 필요하다. 수정에는 닫혀있어야 된다고 했지만! (반쪽짜리 OCP충족)<br /> <strong>→ 이 문제를 해결해기 위해서는 생성자를 통해 외부(AppConfig)에서 의존관계 주입으로 완전한 OCP를 충족시켜야한다!</strong></p><div class="language-java highlighter-rouge"><div class="code-header" data-lang="java"><button><i class="fa-fw far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nf">AppConfig</span><span class="o">()</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="nc">PlayerType</span> <span class="nf">playerType</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="k">new</span> <span class="nf">Youtube</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+</pre></table></code></div></div><div class="language-java highlighter-rouge"><div class="code-header" data-lang="java"><button><i class="fa-fw far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>  
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>  
+		
+		<span class="nc">AppConfig</span> <span class="n">appConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AppConfig</span><span class="o">();</span>
+		
+		<span class="n">player</span> <span class="n">player</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Player</span><span class="o">();</span>  
+		<span class="c1">//player.setPlayerType(new Youtube());   </span>
+		<span class="c1">//player.setPlayerType(new Netflix());  // 여전히 수정에 열려있음.   </span>
+
+		<span class="n">player</span><span class="o">.</span><span class="na">setPlayerType</span><span class="o">(</span><span class="n">appConfig</span><span class="o">.</span><span class="na">playerType</span><span class="o">());</span> <span class="c1">// AppConfig를 통한 기존코드 변경을 없앰.</span>
+		<span class="n">player</span><span class="o">.</span><span class="na">play</span><span class="o">();</span>	  
+	<span class="o">}</span>  
+<span class="o">}</span>  
+
+
+</pre></table></code></div></div><h2 id="lsp---리스코프-치환-원칙-liskov-substitution-principle">LSP - 리스코프 치환 원칙 (Liskov substitution principle)</h2><p>자료형S가 자료형T의 하위형이라면 필요한 프로그램의 속성(정확성, 수행하는 업무 등)의 변경 없이 자료형 T의 객체를 자료형 S의 객체로 교체(치환)할 수 있어야 한다는 원칙이다. 이는 객체 지향 프로그래밍에서 부모 클래스의 인스턴스 대신 자식 클래스의 인스턴스를 사용해도 문제가 없어야 한다는 것을 의미한다.</p><p>이해를 돕기위해 도형을 예시를 들어보자. 도형 클래스와 사각형 클래스가 있고, 사각형 클래스는 도형 클래스의 상속을 받는다고 가정하자.</p><div class="language-text highlighter-rouge"><div class="code-header" data-lang="text"><button><i class="fa-fw far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>(1) 도형은 둘레를 가지고 있다.  
+(2) 도형은 넓이를 가지고 있다.  
+(3) 도형은 각을 가지고 있다.  
+</pre></table></code></div></div><p>일반화 관계(일관성인지 확인하는 방법은 단어를 교체해 보면 알 수 있다. (1) ~ (3)의 도형이란 단어 대신 사각형을 넣어보자.</p><div class="language-text highlighter-rouge"><div class="code-header" data-lang="text"><button><i class="fa-fw far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>(1) 사각형은 둘레를 가지고 있다.  
+(2) 사각형은 넓이를 가지고 있다.  
+(3) 사각형은 각을 가지고 있다.  
+</pre></table></code></div></div><p>(1) ~ (3) 모두 딱히 이상한 부분이 보이지 않는다. 따라서 도형과 사각형 사이에는 일관성이 있다고 할 수 있다.</p><p>여기서 원(Circle) 이라는 도형에 대해 생각해보자. 원 클래스 역시 도형 클래스의 상속을 받는다고 가정하자. 앞에서 언급한 (1) ~ (3)의 도형 단어 대신 원을 대입해보자.</p><div class="language-text highlighter-rouge"><div class="code-header" data-lang="text"><button><i class="fa-fw far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>(1) 원은 둘레를 가지고 있다.
+(2) 원은 넓이를 가지고 있다.
+(3) 원은 각을 가지고 있다.
+</pre></table></code></div></div><p>문장을 읽어보면 (3)번 문장이 어색하다는 것을 알 수 있다. 따라서 도형 클래스는 LSP을 만족하지 않은 설계라 할 수 있다. 따라서 (3)문장에 대해서는 일반화 관계가 성립하도록 수정되어야 한다.</p><p>[JAVA 객체 지향 디자인 패턴(정인상/채홍석 지음, 한빛미디어, 2014) p.116~117 예시참고]</p><h2 id="isp---인터페이스-분리-원칙-interface-segregation-principle">ISP - 인터페이스 분리 원칙 (Interface segregation principle)</h2><p><strong>“특정 클라이언트를 위한 인터페이스 여러 개가 범용 인터페이스 하나보다 낫다.”</strong>라는 원칙이다. 이는 다시 말해서, 자신이 사용하지 않는 기능(인터페이스)에는 영향을 받지 말아야 한다는 의미이다.</p><p>예를들어, 우리가 노트북을 사용한다고 생각해보자. 인터넷을 하고 싶은사람과 게임을 하고 싶은사람, 동영상을 보고 싶은 사람은 노트북이 다양한 기능을 제공하고 있지만 본인이 원하는 기능만이 작동하면 되며 자신이 이용하지 않는 기능에 대해서는 영향을 받지 않는다. 이러한 기능을 제공하고 싶을 때 사용되는 것이 ISP이며 사용 방법은 범용의 인터페이스를 만드는 것이 아니라 클라이언트에 특화된 인터페이스를 사용해야한다. <strong>즉 인터페이스를 클라이언트에 특화되도록 분리시키라는 설계 원칙이라고 할 수 있다.</strong></p><h2 id="dip---의존관계-역전-원칙-dependency-inversion-principle">DIP - 의존관계 역전 원칙 (Dependency inversion principle)</h2><p>프로그래머는 <strong>“추상화에 의존해야지, 구체화에 의존하면 안된다.”</strong> (구현에 의존하면 안되고 역할에 의존해야함).</p><p>의존이란 객체A가 객체B를 사용,포함 할 때 A가 B에 의존적이라고 할 수 있다.</p><p>예를들면, 운전자는 자동차라는 역할 부분에 추상화하여 의존해야지 [아반떼, K5, 테슬라] 등의 구현체에 의존해서는 안된다.</p><p>DIP를 만족하면 ‘의존성 주입’ 이라는 기술로 변화에 유연한 설계를 할 수 있다.</p><div class="language-java highlighter-rouge"><div class="code-header" data-lang="java"><button><i class="fa-fw far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre><td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">Player</span><span class="o">{</span>
+	<span class="kd">private</span> <span class="nc">PlayerType</span> <span class="n">playerType</span><span class="o">;</span>  
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPlayerType</span><span class="o">(</span><span class="nc">PlayerType</span> <span class="n">playerType</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">playerType</span> <span class="o">=</span> <span class="n">playerType</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">play</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">playerType</span><span class="o">.</span><span class="na">play</span><span class="o">()</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>  
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>  
+		<span class="n">player</span> <span class="n">player</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Player</span><span class="o">();</span>  
+		<span class="n">player</span><span class="o">.</span><span class="na">setPlayerType</span><span class="o">(</span><span class="k">new</span> <span class="nc">Youtube</span><span class="o">());</span>  <span class="c1">//원하는 플랫폼 선택  </span>
+		<span class="n">player</span><span class="o">.</span><span class="na">setPlayerType</span><span class="o">(</span><span class="k">new</span> <span class="nc">Netflix</span><span class="o">());</span>          
+		<span class="n">player</span><span class="o">.</span><span class="na">play</span><span class="o">();</span>	  
+	<span class="o">}</span>  
+<span class="o">}</span>  
+</pre></table></code></div></div><p>우리는 setPlatform 클래스를 이용하여 실행하고자 하는 파일을 쉽게 바꿀 수 있다. 마찬가지로 새로운 플랫폼(디즈니플러스)을 실행시키고자 한다면, 새로운 클래스(disney)를 만든 후 play 인터페이스를 상속받아 구현한 후 setPlatform 메소드를 이용하여 platform 멤버 변수에 주입시키면 된다. 이와같은 기술을 ‘의존성 주입’ 이라 한다.</p><p>하지만 OCP와 마찬가지로 여전히 클라이언트 코드에서는 <code class="language-plaintext highlighter-rouge">new Youtube()</code>와 <code class="language-plaintext highlighter-rouge">new Netflix()</code>같이 구체화된 클래스에 의존하게 되는데 <strong>이 문제를 해결해기 위해서는 생성자를 통해 외부(AppConfig)에서 의존관계 주입을 통한 관심사의 분리를 통해 완전한 DIP를 충족시켜야한다!</strong></p><div class="language-java highlighter-rouge"><div class="code-header" data-lang="java"><button><i class="fa-fw far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nf">AppConfig</span><span class="o">()</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="nc">PlayerLogic</span> <span class="nf">playerLogic</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="k">new</span> <span class="nf">Youtube</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+</pre></table></code></div></div><div class="language-java highlighter-rouge"><div class="code-header" data-lang="java"><button><i class="fa-fw far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>  
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>  
+		
+		<span class="nc">AppConfig</span> <span class="n">appConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AppConfig</span><span class="o">();</span>
+		
+		<span class="n">player</span> <span class="n">player</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Player</span><span class="o">();</span>  
+		<span class="c1">//player.setPlayerType(new Youtube());   </span>
+		<span class="c1">//player.setPlayerType(new Netflix());  // 여전히 구체화에 의존적   </span>
+
+		<span class="n">player</span><span class="o">.</span><span class="na">setPlayerType</span><span class="o">(</span><span class="n">appConfig</span><span class="o">.</span><span class="na">playerType</span><span class="o">());</span> <span class="c1">// AppConfig를 통한 관심사 분리!</span>
+		<span class="n">player</span><span class="o">.</span><span class="na">play</span><span class="o">();</span>	  
+	<span class="o">}</span>  
+<span class="o">}</span>  
+
+
+</pre></table></code></div></div><p>[참고자료]</p><ul><li>https://ko.wikipedia.org/wiki/SOLID_(%EA%B0%9D%EC%B2%B4<em>%EC%A7%80%ED%96%A5</em>%EC%84%A4%EA%B3%84)<li>https://velog.io/@kyle/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-SOLID-%EC%9B%90%EC%B9%99-%EC%9D%B4%EB%9E%80<li>https://dev-momo.tistory.com/entry/SOLID-원칙<li>[JAVA 객체 지향 디자인 패턴(정인상/채홍석 지음, 한빛미디어, 2014)]</ul></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/design-pattern/'>Design Pattern</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/solid/" class="post-tag no-text-decoration" >SOLID</a> <a href="/tags/design-pattern/" class="post-tag no-text-decoration" >Design Pattern</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=객체지향의 5대원칙 - SOLID (SRP, OCP, LSP, ISP, DIP) - Hoon's Devlog&url=https://sunghoon0307.github.io/posts/SOLID/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=객체지향의 5대원칙 - SOLID (SRP, OCP, LSP, ISP, DIP) - Hoon's Devlog&u=https://sunghoon0307.github.io/posts/SOLID/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=객체지향의 5대원칙 - SOLID (SRP, OCP, LSP, ISP, DIP) - Hoon's Devlog&url=https://sunghoon0307.github.io/posts/SOLID/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink('', 'Link copied successfully!')" data-toggle="tooltip" data-placement="top" title="Copy link"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/Java8-%EC%BB%AC%EB%A0%89%EC%85%98%EC%9D%98-%EC%82%AC%EC%9A%A9/">[JAVA8_함수형 프로그래밍] 컬렉션의 사용</a><li><a href="/posts/Java8-String,Comparator-%EA%B7%B8%EB%A6%AC%EA%B3%A0-filter/">[JAVA8_함수형 프로그래밍] String, Comparator 그리고 filter</a><li><a href="/posts/JPA7/">[JPA] 연관관계 매핑의 종류(@ManyToOne, @OneToMany, @OneToOne, @ManyToMany)</a><li><a href="/posts/JPA8/">[JPA] 상속관계 매핑, @MappedSuperclass</a><li><a href="/posts/JPA9/">[JPA] 프록시와 연관관계 관리</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/hibernate/">Hibernate</a> <a class="post-tag" href="/tags/jpa/">JPA</a> <a class="post-tag" href="/tags/orm/">ORM</a> <a class="post-tag" href="/tags/java8/">Java8</a> <a class="post-tag" href="/tags/stream/">stream</a> <a class="post-tag" href="/tags/%EA%B0%9D%EC%B2%B4/">객체</a> <a class="post-tag" href="/tags/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5/">객체지향</a> <a class="post-tag" href="/tags/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98-%EC%82%AC%EC%8B%A4%EA%B3%BC-%EC%98%A4%ED%95%B4/">객체지향의 사실과 오해</a> <a class="post-tag" href="/tags/%EB%9E%8C%EB%8B%A4/">람다</a> <a class="post-tag" href="/tags/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">함수형 프로그래밍</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/Java8-String,Comparator-%EA%B7%B8%EB%A6%AC%EA%B3%A0-filter/"><div class="card-body"> <span class="timeago small" >Jun 23<i class="unloaded">2022-06-23T17:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>[JAVA8_함수형 프로그래밍] String, Comparator 그리고 filter</h3><div class="text-muted small"><p> ▶︎ 스트링 이터레이션 chars() 메서드는 forEach() 내부 이터레이터를 사용하여 이터레이션하는 스트림을 리턴한다. 1 2 3 4 5 6 7 8 final String str = "w00t"; str.chars() .forEach(ch -&gt; System.out.println(ch)); // 메서드 레퍼런스로 변환 s...</p></div></div></a></div><div class="card"> <a href="/posts/Java8-%EC%BB%AC%EB%A0%89%EC%85%98%EC%9D%98-%EC%82%AC%EC%9A%A9/"><div class="card-body"> <span class="timeago small" >Jun 6<i class="unloaded">2022-06-06T12:40:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>[JAVA8_함수형 프로그래밍] 컬렉션의 사용</h3><div class="text-muted small"><p> ▶︎ 리스트를 사용한 이터레이션 1 final List&lt;String&gt; friends = Arrays.asList("Brian", "Nate", "Neal", "Raju", "Sara", "Scott"); 기존 관습적인 방법 1 2 3 4 5 6 7 8 9 // 1번 for (int i = 0; i &lt; friends.siz...</p></div></div></a></div><div class="card"> <a href="/posts/JPA10/"><div class="card-body"> <span class="timeago small" >Feb 2<i class="unloaded">2022-02-02T14:50:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>[JPA] 값 타입</h3><div class="text-muted small"><p> ◼︎ 값 타입 ▶︎ JPA의 데이터 타입 분류 엔티티 타입 @Entity로 정의하는 객체 데이터가 변해도 식별자로 지속해서 추적 가능 예) 회원 엔티티의 키나 나이 값을 변경해도 식별자로 인식 가능 값 타입 int, Integer, String처럼 단순히 값으로 사용...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/JPA8/" class="btn btn-outline-primary" prompt="Older"><p>[JPA] 상속관계 매핑, @MappedSuperclass</p></a> <a href="/posts/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98-%EC%82%AC%EC%8B%A4%EA%B3%BC-%EC%98%A4%ED%95%B41/" class="btn btn-outline-primary" prompt="Newer"><p>객체지향의 사실과 오해 1_협력하는 객체들의 공동체, 객체의 행동과 상태 그리고 식별자</p></a></div><div id="disqus" class="pt-2 pb-2"><p class="text-center text-muted small pb-5"> Comments powered by <a href="https://disqus.com/">Disqus</a>.</p></div><script src="/assets/js/lib/jquery.disqusloader.min.js"></script> <script> const options = { scriptUrl: 'https://https-sunghoon0307-github-io.disqus.com/embed.js', disqusConfig: function() { this.page.title = '객체지향의 5대원칙 - SOLID (SRP, OCP, LSP, ISP, DIP)'; this.page.url = 'https://sunghoon0307.github.io/posts/SOLID/'; this.page.identifier = '/posts/SOLID/'; } }; $.disqusLoader('#disqus', options); </script> <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><div align="center" style="margin: 1em 0;"> <ins class="adsbygoogle" style="display:block; border-bottom: initial;" data-ad-client="ca-pub-4193259919190486" data-ad-format="auto"></ins></div><script> (adsbygoogle = window.adsbygoogle || []).push({}); </script></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2022 <a href="https://github.com/sunghoon0307">sunghoon</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/hibernate/">Hibernate</a> <a class="post-tag" href="/tags/jpa/">JPA</a> <a class="post-tag" href="/tags/orm/">ORM</a> <a class="post-tag" href="/tags/java8/">Java8</a> <a class="post-tag" href="/tags/stream/">stream</a> <a class="post-tag" href="/tags/%EA%B0%9D%EC%B2%B4/">객체</a> <a class="post-tag" href="/tags/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5/">객체지향</a> <a class="post-tag" href="/tags/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98-%EC%82%AC%EC%8B%A4%EA%B3%BC-%EC%98%A4%ED%95%B4/">객체지향의 사실과 오해</a> <a class="post-tag" href="/tags/%EB%9E%8C%EB%8B%A4/">람다</a> <a class="post-tag" href="/tags/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">함수형 프로그래밍</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://sunghoon0307.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/clipboard@2/dist/clipboard.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/app.js"></script> <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8TV0K6D2V"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Q8TV0K6D2V'); </script>
