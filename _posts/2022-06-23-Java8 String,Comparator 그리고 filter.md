@@ -1,5 +1,5 @@
 ---
-title: Java8 String, Comparator 그리고 filter
+title: [JAVA8 - 함수형 프로그래밍] String, Comparator 그리고 filter
 author: sunghoon
 date: 2022-06-23 17:00:00 +0900
 categories: [Java8]
@@ -304,7 +304,7 @@ System.out.println("olderThan20 = " + olderThan20);
 
 → 타깃 컬렉션 (olderThan20)에 엘리먼트를 추가하는 오퍼레이션이 너무 로우레벨이다. 이터레이션을 동시에 실행하려면, 즉시 스레드 세이프티 문제에 대해 고려해야함.
 
-1. collect() 메서드 사용한 버전
+2. collect() 메서드 사용한 버전
 
 ```java
 List<Person> olderThan20 =
@@ -322,7 +322,7 @@ List<Person> olderThan20 =
 - collect() 메서드를 사용함으로써 코드에서 명시적 변경이 발생하지 않기 때문에 이터레이션의 실행을 병렬화하기가 쉽다. 변경에 대한 부분은 라이브러리에서 제어하기 때문에 라이브러리를 사용한 조율이 간단하고 스레드 세이프티를 보장해준다.
 - collect() 메서드는 다른 서브 리스트 간의 병렬 덧셈을 수행하여 그 병렬 덧셈의 결과를 스레드 세이프티하게 좀 더 큰 규모의 리스트로 합칠 수 있다.
 
-1. Collectors 유틸리티 클래스
+3. Collectors 유틸리티 클래스
 
 ```java
 List<Person> orderThan20_3 =
