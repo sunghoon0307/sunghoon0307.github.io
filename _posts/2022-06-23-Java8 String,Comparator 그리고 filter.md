@@ -1,5 +1,5 @@
 ---
-title: [JAVA8 - 함수형 프로그래밍] String, Comparator 그리고 filter
+title: "[JAVA8_함수형 프로그래밍] String, Comparator 그리고 filter"
 author: sunghoon
 date: 2022-06-23 17:00:00 +0900
 categories: [Java8]
